@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Recette;
 
 class RecetteController extends Controller
 {
@@ -14,6 +15,8 @@ class RecetteController extends Controller
     public function index()
     {
         //
+        $recettes= Recette::all();
+        return view('recettes.index')->with('recettes' , $recettes);
     }
 
     /**
