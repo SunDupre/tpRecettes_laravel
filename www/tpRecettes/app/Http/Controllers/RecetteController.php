@@ -15,7 +15,7 @@ class RecetteController extends Controller
     public function index()
     {
         //
-        $recettes= Recette::all();
+        $recettes = Recette::all();
         return view('recettes.index')->with('recettes' , $recettes);
     }
 
@@ -27,6 +27,7 @@ class RecetteController extends Controller
     public function create()
     {
         //
+        return view('recettes.create');
     }
 
     /**
@@ -49,6 +50,8 @@ class RecetteController extends Controller
     public function show($id)
     {
         //
+        $recette = Recette::find($id);
+        return view('recettes.detail')->with('recette' , $recette);
     }
 
     /**
