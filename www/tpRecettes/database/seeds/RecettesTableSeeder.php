@@ -12,6 +12,6 @@ class RecettesTableSeeder extends Seeder
     public function run()
     {
         factory(App\Recette::class, 5)->create();
-        //
+        
     }
 }
