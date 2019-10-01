@@ -38,7 +38,28 @@ class RecetteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Valider les données
+        $request->validate([
+            'titre' => 'required|max:200',
+            'ingredients' => 'required|max:255',
+            'duree' => 'required|integer',
+            'cuisson' => 'required|integer',
+            'difficulte' => 'required|integer|between:1,5',
+            'description' => 'required|max:255'
+        ]);
+
+        $recette = new Recette($request->all());
+        
+        //Peut être enlever en cas de mass assigation
+        $recette->titre = $request->input("titre");
+        $recette->ingredients = $request->input("ingredients");
+        $recette->duree = $request->input("duree");
+        $recette->cuisson = $request->input("cuisson");
+        $recette->difficulte = $request->input("difficulte");
+        $recette->description = $request->input("description");
+        
+        $recette->save();
+        return redirect('recettes');
     }
 
     /**

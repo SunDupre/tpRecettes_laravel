@@ -9,7 +9,7 @@
         </div>
         <div class="offset-2 col-sm-8">
             <form action="/recettes" method="POST">
-                @if ($error->any())
+                @if ($errors->any())
                 <div class="alert alert-danger" role="alert">
                     Le formulaire contien des erreurs
                 </div>
