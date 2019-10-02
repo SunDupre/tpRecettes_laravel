@@ -22,6 +22,7 @@ class CreateRecettesTable extends Migration
             $table->integer("difficulte");
             $table->string("description", 255);
             $table->timestamps();
+            $table->integer("user_id");
         });
     }
 

@@ -12,7 +12,7 @@ $factory->define(Recette::class, function (Faker $faker) {
         "duree" => $faker->numberBetween(10, 120),
         "cuisson" => $faker->numberBetween(20, 45),
         "difficulte" => $faker->numberBetween(1, 5),
-        "description" => $faker->numberBetween(3, true)
-        
+        "description" => $faker->numberBetween(3, true),
+        "user_id" => $faker->numberBetween(3, true)
     ];
 });
