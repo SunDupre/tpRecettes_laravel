@@ -59,7 +59,7 @@ class RecetteController extends Controller
         $recette->description = $request->input("description");
         
         $recette->save();
-        return redirect('recettes');
+        return redirect('/recettes');
     }
 
     /**
@@ -84,6 +84,8 @@ class RecetteController extends Controller
     public function edit($id)
     {
         //
+        $recette = Recette::find($id);
+        return view('recettes.edit')->with('recette' , $recette);
     }
 
     /**
@@ -95,7 +97,30 @@ class RecetteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Valider les données
+        $request->validate([
+            'titre' => 'required|max:200',
+            'ingredients' => 'required|max:255',
+            'duree' => 'required|integer',
+            'cuisson' => 'required|integer',
+            'difficulte' => 'required|integer|between:1,5',
+            'description' => 'required|max:255'
+        ]);
+
+        $recette = Recette::find($id);
+        
+        //Peut être enlever en cas de mass assigation
+        $recette->titre = $request->input("titre");
+        $recette->ingredients = $request->input("ingredients");
+        $recette->duree = $request->input("duree");
+        $recette->cuisson = $request->input("cuisson");
+        $recette->difficulte = $request->input("difficulte");
+        $recette->description = $request->input("description");
+        
+        $recette->save();
+        // Rediriger vers la page d'accueil
+        return redirect('/recettes'.$recette->id);
+
     }
 
     /**
@@ -106,6 +131,12 @@ class RecetteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        /* Retrouver et supprimer la recette de la 
+        base de données */
+        
+        $recette = Recette::destroy($id);
+
+        // Rediriger vers la page d'accueil
+        return redirect('/recettes');
     }
 }

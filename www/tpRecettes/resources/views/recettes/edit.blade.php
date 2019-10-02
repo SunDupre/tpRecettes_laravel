@@ -5,15 +5,18 @@
 <div class="container">
     <div class="row">
         <div class="col-sm12 d-flex justify-content-center">
-            <h1>Création d'une nouvelle recette</h1>
+        <h1>Modification recette {{ $recette->titre }}</h1>
         </div>
         <div class="offset-2 col-sm-8">
-            <form action="/recettes" method="POST">
+            <form action="/recettes{{ $recette->id}}" method="post">
+            <input type="hidden" name="_methode" value="put" />
+
                 @if ($errors->any())
                 <div class="alert alert-danger" role="alert">
                     Le formulaire contien des erreurs
                 </div>
                 @endif
+
                 @csrf
                 <div class="form-group">
                     <label for="titre">Titre</label>
@@ -57,7 +60,7 @@
                         <span class="text-danger help-block">{{ $message }} </span>
                     @enderror
                 </div>
-                <button type="submit" class="btn btn-default">Créer recette</button>
+                <button type="submit" class="btn btn-default">Modifier recette</button>
             </form>
         </div>
     </div>

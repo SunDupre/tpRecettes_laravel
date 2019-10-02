@@ -36,9 +36,11 @@ awesome.min.css">
                     <li class="navbar-nav mr-auto">
                         <a class="nav-link" href="{{ URL::to('recettes') }}">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ URL::to('recettes/create') }}">Nouvelle recette</a>
-                    </li>
+                    @auth
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ URL::to('recettes/create') }}">Nouvelle recette</a>
+                        </li>
+                    @endauth
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
