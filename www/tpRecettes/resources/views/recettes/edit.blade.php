@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@section('dynamicPageTitle', 'Modifier la recette - ')
 
 <div class="container">
     <div class="row">

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@section('dynamicPageTitle', 'Détail de cette recette - ')
 
 <div class="container">
     <div class="card bg-light border-secondary">

@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-
+@section('dynamicPageTitle', 'Création nouvelle recette - ')
+    
 <div class="container">
     <div class="row">
         <div class="col-sm12 d-flex justify-content-center">
