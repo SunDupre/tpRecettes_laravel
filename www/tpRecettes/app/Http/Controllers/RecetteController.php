@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Recette;
 
+use Illuminate\Support\Facade\Auth;
+
 class RecetteController extends Controller
 {
     /**
@@ -57,8 +59,13 @@ class RecetteController extends Controller
         $recette->cuisson = $request->input("cuisson");
         $recette->difficulte = $request->input("difficulte");
         $recette->description = $request->input("description");
-        
+
+        //Retrouve le user id et le met dans la recette
+        $recette->user_id = Auth::id();
+
         $recette->save();
+
+        //Rediriger vers la page d'accueil
         return redirect('/recettes');
     }
 

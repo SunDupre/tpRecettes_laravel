@@ -14,4 +14,10 @@ class Recette extends Model
         'difficulte',
         'description'
     ];
+    //Récupérer le user à qui appartient la recette
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

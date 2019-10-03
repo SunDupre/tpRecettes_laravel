@@ -14,8 +14,8 @@ class CreateUserIdInRecettes extends Migration
     public function up()
     {
         Schema::create('user_id_in_recettes', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+            $table->bigInteger('user_id')->unsigned()->index();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -26,6 +26,7 @@ class CreateUserIdInRecettes extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_id_in_recettes');
+        $table->dropForeign(['user_id']);
+        $table->dropColumn(['user_id']);
     }
 }

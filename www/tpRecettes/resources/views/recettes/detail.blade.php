@@ -21,7 +21,7 @@
         </div>
         <div class="card-footer text-muted">
             <p>mise en ligne le {{ date_format($recette->created_at, "d F Y")  }}</p>
-            @auth
+            @canany(['update', 'delete'], $recette)
                 <div class="d-flex justify-content-around">
                     <a class="btn btn-uotline-info" href="{{ URL::to('recettes/'. $recette->id.'/edit') }}">Modifier</a>
                     <form action="/recettes/{{ $recette->id }}" method="post">
@@ -30,7 +30,7 @@
                         <button type="submit" class="btn btn-outline-danger">Supprimer</button>
                     </form>
                 </div>
-            @endauth
+            @endcanany
         </div>
     </div>
 </div>
