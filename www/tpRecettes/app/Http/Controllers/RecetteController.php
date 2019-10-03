@@ -16,8 +16,12 @@ class RecetteController extends Controller
      */
     public function index()
     {
-        //
-        $recettes = Recette::all();
+        // Récupérer toutes les recettes
+        // $recettes = Recette::all();
+
+        // Récupérer toutes les recettes et les stocker dans une variable
+        $recettes = Recette::orderBy("created_at", "desc")->simplePaginate(3);
+        
         return view('recettes.index')->with('recettes' , $recettes);
     }
 
@@ -32,6 +36,24 @@ class RecetteController extends Controller
         return view('recettes.create');
     }
 
+    /**
+     * Recherche par mots cléf
+     */
+    public function search(Request $request)
+    {
+        // Récupérer le mot clé
+        $search = $request->input("search");
+
+        //chercher les recettes qui matchent le mot clé
+        $recette = Recette::where("titre", "like", "%$search%")
+                            ->orWhere("ingredients", "like", "%$search%")
+                            ->orWhere("description", "like", "%$search%")
+                            ->orderBy("created_at", "desc")->simplePaginate(3);
+
+        // Envoyer les recettes vers la vue <index class="blade php
+        return view('recette.index')->with('recettes', $recettes);
+
+    }
     /**
      * Store a newly created resource in storage.
      *

@@ -36,11 +36,14 @@ awesome.min.css">
                     <li class="navbar-nav mr-auto">
                         <a class="nav-link" href="{{ URL::to('recettes') }}">Home</a>
                     </li>
+                    
                     @auth
                         <li class="nav-item">
                             <a class="nav-link" href="{{ URL::to('recettes/create') }}">Nouvelle recette</a>
                         </li>
                     @endauth
+                    <input type="text" class="from-controle" name="search" placeholder="Petit Poulet Peulé">
+                    <button type="sumit" class="btn btn-secondary">Rechercher</button>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->

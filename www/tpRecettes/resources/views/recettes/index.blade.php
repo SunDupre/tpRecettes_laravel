@@ -11,6 +11,9 @@
                 <p>cuisson : {{ $recette->cuisson }} minutes</p>
             </a>
         @endforeach
+        <div class="d-flex justify-content-center">
+            {{ $recettes->links() }}
+        </div>
     </div>
 </div>
 
