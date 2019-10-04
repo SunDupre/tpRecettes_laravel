@@ -14,6 +14,6 @@ return [
     */
 
     'failed' => 'Ces informations identification ne correspondent pas à nos enregistrements.',
-    'throttle' => 'Trop de tentatives de connexion. Veuillez réessayer dans: secondes secondes. ',
+    'throttle' => 'Trop de tentatives de connexion. Veuillez réessayer dans :secondes secondes. ',
 
 ];

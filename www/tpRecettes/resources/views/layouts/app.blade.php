@@ -36,16 +36,23 @@ awesome.min.css">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <li class="navbar-nav mr-auto">
-                        <a class="nav-link" href="{{ URL::to('recettes') }}">Home</a>
+                        <a class="nav-link" href="{{ URL::to('recettes') }}">{{ __('menu.home') }}</a>
                     </li>
                     
                     @auth
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ URL::to('recettes/create') }}">Nouvelle recette</a>
+                            <a class="nav-link" href="{{ URL::to('recettes/create') }}">{{ __('menu.new_recette') }}</a>
                         </li>
                     @endauth
-                    <input type="text" class="from-controle" name="search" placeholder="Petit Poulet Peulé">
-                    <button type="sumit" class="btn btn-secondary">Rechercher</button>
+                    <ul class="navbar-nav mr-auto">
+                        <form class="form-inline" action="/recettes/search" method="POST">
+                            @csrf
+                            <div class="d-fex justify-content-around">
+                                <input type="text" class="from-controle" name="search" placeholder="Petit Poulet">
+                                <button type="submit" class="btn btn-secondary">{{ __('menu.recherche') }}</button>
+                            </div>
+                        </form>
+                    </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->

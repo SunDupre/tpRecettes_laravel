@@ -17,8 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'LangueController@index')->name('home');
 
 Route::resource('recettes','RecetteController');
 
 Route::post('/recettes/search', 'RecetteController@search');
+
+Route::name('language')->get('language/{local}', 'LangueController@language');
