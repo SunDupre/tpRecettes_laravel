@@ -23,4 +23,4 @@ Route::resource('recettes','RecetteController');
 
 Route::post('/recettes/search', 'RecetteController@search');
 
-Route::name('language')->get('language/{local}', 'LangueController@language');
+Route::get('/language/{locale}', 'LanguageController@language');

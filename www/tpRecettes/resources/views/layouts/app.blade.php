@@ -14,14 +14,13 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-
 awesome.min.css">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -86,7 +85,17 @@ awesome.min.css">
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
-                                <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" arial-haspopup="true" arial-expanded="false">
+                                <button class="btn btn-outline-secondary dropdown-toggle" type="button"                           id="dropdownMenuButton" data-toggle="dropdown" arial-haspopup="true"                      arial-expanded="false">
+                                    <img class="flag" alt="Language" src="{{ asset('images/flags/'.session('locale').'.png') }}">
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    @foreach (config('app.locales') as $locale)
+                                        <a class="dropdown-item" href="{{ URL::to('language/' . $locale) }}">
+                                            <img class="flag" src="{{ asset('images/flags/'. $locale.'.png') }}">
+                                </a>
+                                    @endforeach
+                                </div>
+                            </li>
                         @endguest
                     </ul>
                 </div>
